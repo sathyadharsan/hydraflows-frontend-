@@ -3,8 +3,8 @@ import { Send, Phone, Mail, MapPin, CheckCircle2, ChevronRight, ChevronLeft, Bui
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Use local backend during development and Vercel backend during production
-const API_BASE = import.meta.env.PROD 
-  ? 'https://hydra-flows-ai-ffe5.vercel.app' 
+const API_BASE = import.meta.env.PROD
+  ? 'https://hydraflows-backend.vercel.app'
   : 'http://localhost:3001';
 const sectors = [
   { value: 'Apartment', label: 'Apartment / Villa', icon: '🏢' },
@@ -40,10 +40,10 @@ const ContactForm: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      
+
       const data = await res.json();
       console.log('[ContactForm] Response:', data);
-      
+
       if (res.ok && data.success) {
         setStatus('success');
       } else {
